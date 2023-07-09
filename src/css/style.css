@@ -4,6 +4,7 @@
 body {
     height: 100svh;
     width: 100svw;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .navbar {
@@ -11,7 +12,6 @@ body {
     width: 100%;
     box-shadow: 3px 3px 10px grey;
     background-color: #0B0B0B;
-
 }
 
 .logo-text {
@@ -26,13 +26,11 @@ body {
     height: 100%;
     width: 100%;
     font-size: 3em;
-
 }
 
 .main {
     height: 80%;
     width: 100%;
-
 }
 
 .text-input-area {
@@ -49,6 +47,9 @@ body {
     padding-right: 2%;
     border-radius: 10px;
     border: 0.5px solid grey;
+    box-shadow: 3px 3px 10px grey;
+    height: 80%;
+    width: 90%;
 }
 
 .input:focus {
@@ -58,13 +59,16 @@ body {
 .operation-buttons {
     width: 40%;
     height: 100%;
-
+    margin-left: 4%;
 }
-.save, .copy, .clear{
+
+.save,
+.copy,
+.clear {
     font-size: 1.2em;
     padding: 2.5% 10%;
     margin: 1%;
-    color:#D10000 ;
+    color: #D10000;
     border: 0.8px solid gray;
     border-radius: 25px;
     cursor: pointer;
@@ -72,18 +76,51 @@ body {
     background-color: #0B0B0B;
     font-family: 'Exo', sans-serif;
     letter-spacing: 1.5px;
-
+    box-shadow: 3px 3px 10px grey;
 }
-.save:hover, .copy:hover, .clear:hover{
-  
+
+.save:hover,
+.copy:hover,
+.clear:hover {
     background-color: #D10000;
     border: 0.8px solid gray;
     color: #0B0B0B;
-  
+}
+
+.message {
+    color: #D10000;
+    margin-top: 5%;
+    font-weight: 500;
 }
 
 .footer {
     height: 10%;
     width: 100%;
+    background-color: #0B0B0B;
+    box-shadow: 3px 3px 10px grey;
+}
 
+.copyright {
+    color: #D10000;
+}
+
+/* tablet responsive */
+@media screen and (max-width: 768px) {
+    .logo-text h1 {
+        font-size: 2.3em;
+    }
+
+    .input {
+        font-size: 1.2em;
+    }
+
+    .save,
+    .copy,
+    .clear {
+        font-size: 1em;
+    }
+
+    .copyright {
+        font-size: 0.8em;
+    }
 }
