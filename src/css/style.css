@@ -26,6 +26,7 @@ body {
     height: 100%;
     width: 100%;
     font-size: 3em;
+    margin-left: 0.3%d;
 }
 
 .main {
@@ -112,6 +113,8 @@ body {
 
     .input {
         font-size: 1.2em;
+        height: 70%;
+        width: 95%;
     }
 
     .save,
@@ -123,4 +126,50 @@ body {
     .copyright {
         font-size: 0.8em;
     }
+}
+
+@media screen and (max-width: 425px) {
+    .logo-text h1 {
+        font-size: 1.5em;
+    }
+
+    .main {
+        flex-direction: column;
+    }
+
+    .text-input-area {
+        height: 60%;
+        width: 100%;
+    }
+
+    .input {
+        height: 90%;
+        width: 90%;
+        font-size: 1em;
+    }
+
+    .operation-buttons {
+        height: 40%;
+        width: 100%;
+        align-items: center;
+        margin-left: 0;
+    }
+
+    .save,
+    .copy,
+    .clear {
+        font-size: 0.7em;
+        padding: 2% 8%;
+    }
+
+    .message {
+        margin-top: 2%;
+        font-size: 0.7em;
+    }
+    .copyright {
+        font-size: 0.5em;
+    }
+
+
+
 }
