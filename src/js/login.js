@@ -37,7 +37,7 @@ function login() {
                 }, 2000)
             }
             else {
-                location.href = "../../src/resources/main-page/index.html";
+                location.href = "src/resources/main-page/index.html";
                 localStorage.setItem("loginUsername", loginUsername);
             }
         }
