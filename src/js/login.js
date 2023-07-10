@@ -22,7 +22,7 @@ var loginUsername;
 var loginPassword;
 
 function register() {
-    location.href = "../../src/resources/register/index.html"
+    location.href = "../../resources/register/index.html"
 }
 function login() {
     loginUsername = document.getElementById("username");
