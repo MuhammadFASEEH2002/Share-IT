@@ -1,0 +1,94 @@
+.login-div {
+    height: 80%;
+    width: 30%;
+    border: 0.8px solid grey;
+    border-radius: 10px;
+    color: #D10000;
+    box-shadow: 3px 3px 10px grey;
+}
+
+.login-heading {
+    height: 20%;
+    width: 100%;
+}
+
+.credentials {
+    width: 90%;
+    height: 20%;
+}
+
+.credentials h4 {
+    width: 30%;
+}
+
+.credentials input {
+    width: 70%;
+    padding: 2%;
+    border-radius: 5px;
+    border: 0.8px solid gray;
+}
+
+.button-div {
+    width: 100%;
+    height: 25%;
+}
+
+.login,
+.register,
+.signup {
+    font-size: 1em;
+    padding: 2.5% 10%;
+    width: 40%;
+    margin: 1%;
+    color: #D10000;
+    border: 0.8px solid gray;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: #0B0B0B;
+    font-family: 'Exo', sans-serif;
+    letter-spacing: 1.5px;
+    box-shadow: 3px 3px 10px grey;
+}
+
+.login:hover,
+.register:hover,
+.signup:hover {
+    background-color: #D10000;
+    border: 0.8px solid gray;
+    color: #0B0B0B;
+}
+
+.message {
+    height: 15%;
+    width: 100%;
+    margin-top: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .login-div {
+        width: 50%;
+    }
+
+}
+
+@media screen and (max-width: 425px) {
+    .login-div {
+        width: 80%;
+    }
+
+    .login-heading {
+        font-size: 1.5em;
+    }
+
+    .credentials h4 {
+        font-size: 0.8em;
+    }
+
+    .login,
+    .register,
+    .signup {
+        font-size: 0.7em;
+    }
+
+}

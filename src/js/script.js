@@ -21,29 +21,32 @@ const db = getDatabase();
 var text = document.getElementById("input");
 var message = document.getElementById("message");
 var textid = 1;
+var loginUsername = localStorage.getItem("loginUsername");
+console.log(loginUsername);
+
 //insert/update text
 function insertData() {
-    if(text.value==""){
+    if (text.value == "") {
         message.innerText = "Text Box is Empty Enter some text to save"
         setTimeout(() => {
             message.innerText = "";
         }, 2000)
 
     }
-    else{
-    set(ref(db, "Text/" + textid), {
-        Text: text.value
-    })
-        .then(() => {
-            message.innerText = "Text Saved"
-            setTimeout(() => {
-                message.innerText = "";
-            }, 2000)
-
+    else {
+        set(ref(db, "Text/" + textid), {
+            Text: text.value
         })
-        .catch((error) => {
-            alert("unsuccessful")
-        });
+            .then(() => {
+                message.innerText = "Text Saved"
+                setTimeout(() => {
+                    message.innerText = "";
+                }, 2000)
+
+            })
+            .catch((error) => {
+                alert("unsuccessful")
+            });
     }
 }
 //copy text inside text area
@@ -56,7 +59,7 @@ function copyText() {
     setTimeout(() => {
         message.innerText = "";
     }, 2000)
-    
+
 }
 window.addEventListener("load", readText)
 //reading the text from firebase db
@@ -88,4 +91,7 @@ function deleteData() {
 document.getElementById("save").addEventListener('click', insertData);
 document.getElementById("copy").addEventListener('click', copyText);
 document.getElementById("clear").addEventListener('click', deleteData);
+
+
+
 
