@@ -18,21 +18,21 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 import { getDatabase, ref, set, get, child, update, remove } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
 const db = getDatabase();
-var username_regex = /^[a-zA-Z]{8,}$/;
-var password_regex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+=\[{\]}\|:;\"'<,>.?/])(?!.*\s).{8,}$/;
-var username = document.getElementById("email");
+var username_regex = /^[a-zA-Z]{5,}$/; //al least 6 digit username
+var password_regex = /^.{8,}$/; //at least 8 digit password
+var username = document.getElementById("username");
 var password = document.getElementById("password");
 var message = document.getElementById("message");
 
 function signup() {
-    if ((email.value.trim() == "") || (password.value.trim() == "")) {
+    if ((username.value.trim() == "") || (password.value.trim() == "")) {
         message.innerText = "Some Fields are Empty"
         setTimeout(() => {
             message.innerText = "";
         }, 2000)
     }
     else {
-        if (username_regex.test(email.value.trim())) {
+        if (username_regex.test(username.value.trim())) {
             if (password_regex.test(password.value.trim())) {
                 const dbref = ref(db);
                 get(child(dbref, "User/" + username.value)).then((snapshot) => {
@@ -43,7 +43,7 @@ function signup() {
                         }, 2000)
                     }
                     else {
-                        if ((email.value == "") || (password.value == "")) {
+                        if ((username.value == "") || (password.value == "")) {
                             message.innerText = "Some Fields are Empty"
                             setTimeout(() => {
                                 message.innerText = "";
@@ -55,11 +55,13 @@ function signup() {
                                 Password: password.value
                             })
                                 .then(() => {
-
                                     message.innerText = "User Successfully Registered"
                                     setTimeout(() => {
                                         message.innerText = "";
                                     }, 2000)
+                                    setTimeout(() => {
+                                        location.replace("../../../index.html");
+                                    }, 2300)
                                 })
                                 .catch((error) => {
                                     alert("unsuccessful" + error)
@@ -71,7 +73,23 @@ function signup() {
                         alert("system error" + error);
                     });
             }
+            else {
+                message.innerText = "Password Should Be Atleast 8 Characters Long";
+                setTimeout(() => {
+                    message.innerText = "";
+                }, 2000)
+            }
+        }
+        else {
+            message.innerText = "Username Should Be Atleast 5 Characters Long Having Only Letters";
+            setTimeout(() => {
+                message.innerText = "";
+            }, 2000)
         }
     }
 }
+function login() {
+    location.replace("../../../index.html");
+}
 document.getElementById("signup").addEventListener("click", signup);
+document.getElementById("login").addEventListener("click", login);

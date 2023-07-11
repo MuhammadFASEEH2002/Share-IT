@@ -13,17 +13,17 @@ const firebaseConfig = {
     messagingSenderId: "646080011659",
     appId: "1:646080011659:web:dda5b57bafb8c82457a38e"
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 import { getDatabase, ref, set, get, child, update, remove } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
 const db = getDatabase();
 var loginUsername;
 var loginPassword;
-
+// register button function
 function register() {
-    location.href = "src/resources/register/index.html"
+    location.replace("src/resources/register/index.html");
 }
+// login button function
 function login() {
     loginUsername = document.getElementById("username");
     loginPassword = document.getElementById("password");
@@ -37,8 +37,9 @@ function login() {
                 }, 2000)
             }
             else {
-                location.href = "src/resources/main-page/index.html";
-                localStorage.setItem("loginUsername", loginUsername);
+                location.replace("src/resources/main-page/index.html");
+                var name = loginUsername.value;
+                localStorage.setItem("name", name);
             }
         }
         else {

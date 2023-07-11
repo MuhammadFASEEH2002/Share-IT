@@ -20,10 +20,8 @@ import { getDatabase, ref, set, get, child, update, remove } from "https://www.g
 const db = getDatabase();
 var text = document.getElementById("input");
 var message = document.getElementById("message");
-var textid = 1;
-var loginUsername = localStorage.getItem("loginUsername");
-console.log(loginUsername);
-
+var username = localStorage.getItem("name");
+console.log(username);
 //insert/update text
 function insertData() {
     if (text.value == "") {
@@ -31,10 +29,9 @@ function insertData() {
         setTimeout(() => {
             message.innerText = "";
         }, 2000)
-
     }
     else {
-        set(ref(db, "Text/" + textid), {
+        set(ref(db, "Text/" + username), {
             Text: text.value
         })
             .then(() => {
@@ -61,11 +58,14 @@ function copyText() {
     }, 2000)
 
 }
+window.addEventListener("load",()=>{
+    document.getElementById("welcome_text").innerText="Welcome,  "+ username;
+})
 window.addEventListener("load", readText)
 //reading the text from firebase db
 function readText() {
     const dbref = ref(db);
-    get(child(dbref, "Text/" + textid)).then((snapshot) => {
+    get(child(dbref, "Text/" + username)).then((snapshot) => {
         if (snapshot.exists()) {
             text.value = snapshot.val().Text;
         }
@@ -79,7 +79,7 @@ function readText() {
 }
 // delete data
 function deleteData() {
-    remove(ref(db, "Text/" + textid))
+    remove(ref(db, "Text/" + username))
         .then(() => {
             // alert("Text cleared")
             text.value = "";
@@ -88,9 +88,14 @@ function deleteData() {
             alert("unsuccessful")
         })
 }
+// logout function
+function logout() {
+    location.replace("../../../index.html");
+}
 document.getElementById("save").addEventListener('click', insertData);
 document.getElementById("copy").addEventListener('click', copyText);
 document.getElementById("clear").addEventListener('click', deleteData);
+document.getElementById("logout").addEventListener('click', logout);
 
 
 
