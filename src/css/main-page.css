@@ -139,7 +139,7 @@ body {
     }
 
     .input {
-        font-size: 1.2em;
+        font-size: 1em;
         height: 70%;
         width: 95%;
     }
@@ -192,7 +192,7 @@ body {
     .input {
         height: 90%;
         width: 90%;
-        font-size: 1em;
+        font-size: 0.7em;
     }
 
     .operation-buttons {
