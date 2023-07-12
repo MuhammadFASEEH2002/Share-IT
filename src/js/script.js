@@ -21,7 +21,8 @@ const db = getDatabase();
 var text = document.getElementById("input");
 var message = document.getElementById("message");
 var username = localStorage.getItem("name");
-console.log(username);
+var key = "6119558";
+var encrypted = CryptoJS.AES.encrypt(text.value,key).toString();
 //insert/update text
 function insertData() {
     if (text.value == "") {
@@ -32,7 +33,9 @@ function insertData() {
     }
     else {
         set(ref(db, "Text/" + username), {
-            Text: text.value
+            
+            
+            Text: encrypted
         })
             .then(() => {
                 message.innerText = "Text Saved"
@@ -67,7 +70,8 @@ function readText() {
     const dbref = ref(db);
     get(child(dbref, "Text/" + username)).then((snapshot) => {
         if (snapshot.exists()) {
-            text.value = snapshot.val().Text;
+            var decrypted = CryptoJS.AES.decrypt(snapshot.val().Text, key).toString(CryptoJS.enc.Utf8);
+            text.value =decrypted ;
         }
         else {
             console.log("nothing to show");

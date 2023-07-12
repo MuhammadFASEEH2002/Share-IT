@@ -17,12 +17,14 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 import { getDatabase, ref, set, get, child, update, remove } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
+
 const db = getDatabase();
 var username_regex = /^[a-zA-Z]{5,}$/; //al least 6 digit username
 var password_regex = /^.{8,}$/; //at least 8 digit password
 var username = document.getElementById("username");
 var password = document.getElementById("password");
 var message = document.getElementById("message");
+
 
 function signup() {
     if ((username.value.trim() == "") || (password.value.trim() == "")) {
@@ -50,9 +52,18 @@ function signup() {
                             }, 2000)
                         }
                         else {
+                            // 
+                           
+                            const key = "6119558";
+                            // const plainText = "Hello, world!";
+                            const encrypted = CryptoJS.AES.encrypt(password.value,key).toString();
+                            // console.log(encrypted);
+                            // const decrypted = CryptoJS.AES.decrypt(encrypted, key).toString(CryptoJS.enc.Utf8);
+                            // console.log(decrypted);
+                            // 
                             set(ref(db, "User/" + username.value), {
                                 Username: username.value,
-                                Password: password.value
+                                Password: encrypted
                             })
                                 .then(() => {
                                     message.innerText = "User Successfully Registered"

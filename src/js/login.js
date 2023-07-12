@@ -27,10 +27,12 @@ function register() {
 function login() {
     loginUsername = document.getElementById("username");
     loginPassword = document.getElementById("password");
+    const key = "6119558";
+    const encrypted = CryptoJS.AES.encrypt(loginPassword.value,key).toString();
     const dbref = ref(db);
     get(child(dbref, "User/" + loginUsername.value + "/")).then((snapshot) => {
         if (snapshot.exists()) {
-            if ((loginUsername.value != snapshot.val().Username) && (loginPassword.value != snapshot.val().Password)) {
+            if ((loginUsername.value != snapshot.val().Username) && (encrypted != snapshot.val().Password)) {
                 message.innerText = "Username or Password may be incorrect"
                 setTimeout(() => {
                     message.innerText = "";
