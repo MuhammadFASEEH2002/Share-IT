@@ -11,8 +11,8 @@ body {
 .navbar {
     height: 10%;
     width: 100%;
-    box-shadow: 3px 3px 10px grey;
-    background-color: #0B0B0B;
+    box-shadow: 3px 3px 5px gray;
+    background-color: skyblue;
 }
 
 .logo-text {
@@ -23,15 +23,16 @@ body {
 
 .logo-text h1 {
     font-family: 'Lobster', cursive;
-    color: #D10000;
+    color: black;
     height: 100%;
     width: 100%;
     font-size: 3em;
     margin-left: 0.3%d;
+    font-weight: 500;
 }
 
 .welcome-text {
-    color: #D10000;
+    color: black;
     height: 100%;
     width: 20%;
 
@@ -46,14 +47,17 @@ body {
     font-size: 1.2em;
     padding: 2.5% 10%;
     margin: 1%;
-    color: #0B0B0B;
-    border: 0.8px solid red;
+    color: skyblue;
+    border: 0.8px solid black;
     border-radius: 25px;
     cursor: pointer;
     font-weight: 600;
-    background-color: #D10000;
+    background-color: black;
     font-family: 'Exo', sans-serif;
     letter-spacing: 1.5px;
+}
+.logout:hover {
+    box-shadow: 3px 3px 5px grey;
 }
 
 .main {
@@ -74,8 +78,8 @@ body {
     padding-left: 2%;
     padding-right: 2%;
     border-radius: 10px;
-    border: 0.5px solid grey;
-    box-shadow: 3px 3px 10px grey;
+    border: 0.5px solid skyblue;
+    box-shadow: 3px 3px 10px skyblue;
     height: 80%;
     width: 90%;
 }
@@ -96,27 +100,25 @@ body {
     font-size: 1.2em;
     padding: 2.5% 10%;
     margin: 1%;
-    color: #D10000;
+    color: black;
     border: 0.8px solid gray;
     border-radius: 25px;
     cursor: pointer;
     font-weight: 600;
-    background-color: #0B0B0B;
+    background-color: skyblue;
     font-family: 'Exo', sans-serif;
     letter-spacing: 1.5px;
-    box-shadow: 3px 3px 10px grey;
+
 }
 
 .save:hover,
 .copy:hover,
 .clear:hover {
-    background-color: #D10000;
-    border: 0.8px solid gray;
-    color: #0B0B0B;
+    box-shadow: 3px 3px 5px grey;
 }
 
 .message {
-    color: #D10000;
+    color: black;
     margin-top: 5%;
     font-weight: 500;
 }
@@ -124,12 +126,12 @@ body {
 .footer {
     height: 10%;
     width: 100%;
-    background-color: #0B0B0B;
+    background-color: skyblue;
     box-shadow: 3px 3px 10px grey;
 }
 
 .copyright {
-    color: #D10000;
+    color: black;
 }
 
 /* tablet responsive */

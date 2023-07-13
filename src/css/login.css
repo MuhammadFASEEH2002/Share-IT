@@ -1,10 +1,10 @@
 .login-div {
     height: 80%;
     width: 30%;
-    border: 0.8px solid grey;
+    border: 0.8px solid skyblue;
     border-radius: 10px;
-    color: #D10000;
-    box-shadow: 3px 3px 10px grey;
+    color: black;
+    box-shadow: 3px 3px 2px grey;
 }
 
 .login-heading {
@@ -40,23 +40,21 @@
     padding: 2.5% 10%;
     width: 40%;
     margin: 1%;
-    color: #D10000;
-    border: 0.8px solid gray;
+    color: black;
+    border: 0.5px solid grey;
     border-radius: 25px;
     cursor: pointer;
     font-weight: 600;
-    background-color: #0B0B0B;
+    background-color: skyblue;
     font-family: 'Exo', sans-serif;
     letter-spacing: 1.5px;
-    box-shadow: 3px 3px 10px grey;
+  
 }
 
 .login:hover,
 .register:hover,
 .signup:hover {
-    background-color: #D10000;
-    border: 0.8px solid gray;
-    color: #0B0B0B;
+    box-shadow: 1px 1px 3px skyblue;
 }
 
 .message {

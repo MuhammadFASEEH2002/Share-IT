@@ -1,10 +1,8 @@
-
 // firebase: udemyfaseeh@gmail.com
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyAZqtUppL3lhagw1YdQ3TdmMEz3vd7Vcj0",
@@ -14,7 +12,6 @@ const firebaseConfig = {
     messagingSenderId: "646080011659",
     appId: "1:646080011659:web:dda5b57bafb8c82457a38e"
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 import { getDatabase, ref, set, get, child, update, remove } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js";
@@ -23,10 +20,6 @@ const db = getDatabase();
 var text = document.getElementById("input");
 var message = document.getElementById("message");
 var username = localStorage.getItem("name");
-var key = "6119558";
-
-var encrypted = CryptoJS.AES.encrypt(text.value.toString(), key).toString();
-var new_value;
 //insert/update text
 function insertData() {
     if (text.value == "") {
@@ -45,6 +38,7 @@ function insertData() {
                 setTimeout(() => {
                     message.innerText = "";
                 }, 2000)
+                checkForUpdates();
 
             })
             .catch((error) => {
@@ -66,19 +60,12 @@ function copyText() {
 window.addEventListener("load", () => {
     document.getElementById("welcome_text").innerText = "Welcome,  " + username;
 })
-window.addEventListener("load", readText)
+window.addEventListener("load", readText);
 //reading the text from firebase db
 function readText() {
     const dbref = ref(db);
     get(child(dbref, "Text/" + username)).then((snapshot) => {
         if (snapshot.exists()) {
-            // var ciphertext = snapshot.val().Text;
-            // console.log(ciphertext);
-            // console.log(key);
-            // var decryptedBytes = CryptoJS.AES.decrypt(ciphertext,key);
-            // var plaintext = decryptedBytes.toString(CryptoJS.enc.Utf8);
-            // console.log(plaintext);
-            // text.value = plaintext;
             text.value = snapshot.val().Text;
         }
         else {
@@ -105,6 +92,19 @@ function deleteData() {
 // logout function
 function logout() {
     location.replace("../../../index.html");
+}
+function checkForUpdates() {
+    // Make an AJAX request to your server to get the latest sharing text
+    // For example, you can use jQuery's $.get() method:
+    $.get("/get-sharing-text", function(data) {
+        var sharingText = data.sharing_text;
+
+        // Check if the sharing text has changed
+        if ($("#sharing-text").text() !== sharingText) {
+            // Update the sharing text element with the new text
+            $("#sharing-text").text(sharingText);
+        }
+    });
 }
 document.getElementById("save").addEventListener('click', insertData);
 document.getElementById("copy").addEventListener('click', copyText);
