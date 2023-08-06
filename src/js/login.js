@@ -48,7 +48,7 @@ function login() {
     get(child(dbref, "User/" + loginUsername.value + "/")).then((snapshot) => {
         if (snapshot.exists()) {
             if ((loginUsername.value != snapshot.val().Username) && (encrypted != snapshot.val().Password)) {
-                message.innerText = "Username or Password may be incorrect"
+                message.innerText = "Username or password may be incorrect."
                 setTimeout(() => {
                     message.innerText = "";
                 }, 2000)
@@ -63,7 +63,7 @@ function login() {
             }
         }
         else {
-            message.innerText = "User Doesnot Exist, Kindly Register"
+            message.innerText = "User doesnot exist, kindly register."
             setTimeout(() => {
                 message.innerText = "";
             }, 2000)

@@ -65,7 +65,7 @@ function copyText() {
     text.setSelectionRange(0, 99999);
     document.execCommand('copy');
     text.blur();
-    message.innerText = "Text Copied"
+    message.innerText = "Text copied."
     setTimeout(() => {
         message.innerText = "";
     }, 2000)
@@ -101,7 +101,7 @@ function deleteData() {
             text.value = "";
         })
         .catch((error) => {
-            message.innerText = "Message not Deleted due to Some Problem"
+            message.innerText = "Message not deleted because of technical problem."
             setTimeout(() => {
                 message.innerText = "";
             }, 2000)

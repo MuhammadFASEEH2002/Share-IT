@@ -36,7 +36,7 @@ function hideLoader() {
 
 function signup() {
     if ((username.value.trim() == "") || (password.value.trim() == "")) {
-        message.innerText = "Some Fields are Empty"
+        message.innerText = "Some fields are empty."
         setTimeout(() => {
             message.innerText = "";
         }, 2000)
@@ -51,14 +51,14 @@ function signup() {
                     if (snapshot.exists()) {
                         hideLoader();
                         document.getElementById("main").style.opacity = "1";
-                        message.innerText = "User Already Exist, Try Using another email"
+                        message.innerText = "User already exist, try using another username."
                         setTimeout(() => {
                             message.innerText = "";
                         }, 2000)
                     }
                     else {
                         if ((username.value == "") || (password.value == "")) {
-                            message.innerText = "Some Fields are Empty"
+                            message.innerText = "Some fields are empty."
                             setTimeout(() => {
                                 message.innerText = "";
                             }, 2000)
@@ -75,7 +75,7 @@ function signup() {
                                 .then(() => {
                                     hideLoader();
                                     document.getElementById("main").style.opacity = "1";
-                                    message.innerText = "User Successfully Registered"
+                                    message.innerText = "User Successfully Registered, Redirecting to Login Page"
                                     setTimeout(() => {
                                         document.getElementById("main").style.opacity = "0";
                                         showLoader();
@@ -95,14 +95,14 @@ function signup() {
                     });
             }
             else {
-                message.innerText = "Password Should Be Atleast 8 Characters Long";
+                message.innerText = "Password should be atleast 8 characters long";
                 setTimeout(() => {
                     message.innerText = "";
                 }, 2000)
             }
         }
         else {
-            message.innerText = "Username Should Be Atleast 5 Characters Long Having Only Letters";
+            message.innerText = "Username should be atleast 5 characters long having only letters";
             setTimeout(() => {
                 message.innerText = "";
             }, 2000)

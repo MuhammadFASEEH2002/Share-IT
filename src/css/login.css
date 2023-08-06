@@ -40,7 +40,7 @@
     width: 40%;
     margin: 1%;
     color: black;
-    border: 0.5px solid grey;
+    border: 0.8px solid grey;
     border-radius: 25px;
     cursor: pointer;
     font-weight: 600;
@@ -56,6 +56,7 @@
 .register:hover,
 .login2:hover {
     box-shadow: 1px 1px 3px skyblue;
+    border: 2px;
 }
 
 .register,
@@ -77,6 +78,7 @@
     height: 15%;
     width: 100%;
     margin-top: 0;
+    color: red;
 }
 #loader {
     border: 8px solid #f3f3f3; /* Light gray border */
