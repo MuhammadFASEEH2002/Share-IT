@@ -6,6 +6,7 @@ body {
     width: 100svw;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow: hidden;
+    
 }
 
 .navbar {
@@ -63,6 +64,7 @@ body {
 .main {
     height: 80%;
     width: 100%;
+    opacity: 1;
 }
 
 .text-input-area {
@@ -133,6 +135,22 @@ body {
 .copyright {
     color: black;
 }
+#loader {
+    border: 8px solid #f3f3f3; /* Light gray border */
+    border-top: 8px solid #3498db; /* Blue border */
+    border-radius: 50%; /* Rounded border */
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite; /* Animation */
+    margin: auto; /* Center the loader */
+    position: absolute;
+    z-index: 2;
+    display: none;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
 /* tablet responsive */
 @media screen and (max-width: 768px) {

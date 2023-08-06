@@ -34,7 +34,6 @@
 }
 
 .login,
-.register,
 .signup {
     font-size: 1em;
     padding: 2.5% 10%;
@@ -48,13 +47,30 @@
     background-color: skyblue;
     font-family: 'Exo', sans-serif;
     letter-spacing: 1.5px;
-  
+
 }
 
+
 .login:hover,
+.signup:hover,
 .register:hover,
-.signup:hover {
+.login2:hover {
     box-shadow: 1px 1px 3px skyblue;
+}
+
+.register,
+.login2 {
+    font-size: 1em;
+    padding: 2.5% 10%;
+    width: 40%;
+    margin: 1%;
+    color: black;
+    border: 0.5px solid grey;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: 'Exo', sans-serif;
+    letter-spacing: 1.5px;
 }
 
 .message {
@@ -62,6 +78,22 @@
     width: 100%;
     margin-top: 0;
 }
+#loader {
+    border: 8px solid #f3f3f3; /* Light gray border */
+    border-top: 8px solid #3498db; /* Blue border */
+    border-radius: 50%; /* Rounded border */
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite; /* Animation */
+    margin: auto; /* Center the loader */
+    position: absolute;
+    z-index: 2;
+    display: none;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
 @media screen and (max-width: 768px) {
     .login-div {

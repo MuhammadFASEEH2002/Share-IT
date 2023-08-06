@@ -19,17 +19,32 @@ import { getDatabase, ref, set, get, child, update, remove } from "https://www.g
 const db = getDatabase();
 var loginUsername;
 var loginPassword;
+const loader = document.getElementById('loader');
 // register button function
 function register() {
-    location.replace("src/resources/register/index.html");
+    document.getElementById("main").style.opacity = "0";
+    showLoader();
+    setTimeout(() => {
+        location.replace("src/resources/register/index.html");
+
+    }, 1500);
+}
+function showLoader() {
+    loader.style.display = 'block';
+}
+
+function hideLoader() {
+    loader.style.display = 'none';
 }
 // login button function
 function login() {
     loginUsername = document.getElementById("username");
     loginPassword = document.getElementById("password");
     const key = "6119558";
-    const encrypted = CryptoJS.AES.encrypt(loginPassword.value,key).toString();
+    const encrypted = CryptoJS.AES.encrypt(loginPassword.value, key).toString();
     const dbref = ref(db);
+    document.getElementById("main").style.opacity = "0";
+    showLoader();
     get(child(dbref, "User/" + loginUsername.value + "/")).then((snapshot) => {
         if (snapshot.exists()) {
             if ((loginUsername.value != snapshot.val().Username) && (encrypted != snapshot.val().Password)) {
@@ -39,7 +54,10 @@ function login() {
                 }, 2000)
             }
             else {
+                hideLoader();
+                document.getElementById("main").style.opacity = "1";
                 location.replace("src/resources/main-page/index.html");
+
                 var name = loginUsername.value;
                 localStorage.setItem("name", name);
             }

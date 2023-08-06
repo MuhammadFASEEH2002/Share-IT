@@ -24,7 +24,15 @@ var password_regex = /^.{8,}$/; //at least 8 digit password
 var username = document.getElementById("username");
 var password = document.getElementById("password");
 var message = document.getElementById("message");
+const loader = document.getElementById('loader');
 
+function showLoader() {
+    loader.style.display = 'block';
+}
+
+function hideLoader() {
+    loader.style.display = 'none';
+}
 
 function signup() {
     if ((username.value.trim() == "") || (password.value.trim() == "")) {
@@ -36,9 +44,13 @@ function signup() {
     else {
         if (username_regex.test(username.value.trim())) {
             if (password_regex.test(password.value.trim())) {
+                document.getElementById("main").style.opacity = "0";
+                showLoader()
                 const dbref = ref(db);
                 get(child(dbref, "User/" + username.value)).then((snapshot) => {
                     if (snapshot.exists()) {
+                        hideLoader();
+                        document.getElementById("main").style.opacity = "1";
                         message.innerText = "User Already Exist, Try Using another email"
                         setTimeout(() => {
                             message.innerText = "";
@@ -52,27 +64,25 @@ function signup() {
                             }, 2000)
                         }
                         else {
-                            // 
-                           
+                            document.getElementById("main").style.opacity = "0";
+                            showLoader()
                             const key = "6119558";
-                            // const plainText = "Hello, world!";
-                            const encrypted = CryptoJS.AES.encrypt(password.value,key).toString();
-                            // console.log(encrypted);
-                            // const decrypted = CryptoJS.AES.decrypt(encrypted, key).toString(CryptoJS.enc.Utf8);
-                            // console.log(decrypted);
-                            // 
+                            const encrypted = CryptoJS.AES.encrypt(password.value, key).toString();
                             set(ref(db, "User/" + username.value), {
                                 Username: username.value,
                                 Password: encrypted
                             })
                                 .then(() => {
+                                    hideLoader();
+                                    document.getElementById("main").style.opacity = "1";
                                     message.innerText = "User Successfully Registered"
                                     setTimeout(() => {
-                                        message.innerText = "";
-                                    }, 2000)
+                                        document.getElementById("main").style.opacity = "0";
+                                        showLoader();
+                                    }, 1500)
                                     setTimeout(() => {
                                         location.replace("../../../index.html");
-                                    }, 2300)
+                                    }, 2600)
                                 })
                                 .catch((error) => {
                                     alert("unsuccessful" + error)
@@ -100,7 +110,11 @@ function signup() {
     }
 }
 function login() {
-    location.replace("../../../index.html");
+    document.getElementById("main").style.opacity = "0";
+    showLoader();
+    setTimeout(() => {
+        location.replace("../../../index.html");
+    }, 1500);
 }
 document.getElementById("signup").addEventListener("click", signup);
 document.getElementById("login").addEventListener("click", login);

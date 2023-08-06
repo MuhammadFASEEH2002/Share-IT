@@ -20,8 +20,19 @@ const db = getDatabase();
 var text = document.getElementById("input");
 var message = document.getElementById("message");
 var username = localStorage.getItem("name");
+const loader = document.getElementById('loader');
+
+function showLoader() {
+    loader.style.display = 'block';
+}
+
+function hideLoader() {
+    loader.style.display = 'none';
+}
 //insert/update text
 function insertData() {
+    document.getElementById("main").style.opacity = "0";
+    showLoader();
     if (text.value == "") {
         message.innerText = "Text Box is Empty Enter some text to save"
         setTimeout(() => {
@@ -34,6 +45,8 @@ function insertData() {
             Text: text.value
         })
             .then(() => {
+                document.getElementById("main").style.opacity = "1";
+                hideLoader();
                 message.innerText = "Text Saved"
                 setTimeout(() => {
                     message.innerText = "";
@@ -63,10 +76,15 @@ window.addEventListener("load", () => {
 window.addEventListener("load", readText);
 //reading the text from firebase db
 function readText() {
+    document.getElementById("main").style.opacity = "0";
+    showLoader();
     const dbref = ref(db);
     get(child(dbref, "Text/" + username)).then((snapshot) => {
         if (snapshot.exists()) {
+
             text.value = snapshot.val().Text;
+            document.getElementById("main").style.opacity = "1";
+            hideLoader();
         }
         else {
             console.log("nothing to show");
@@ -96,7 +114,7 @@ function logout() {
 function checkForUpdates() {
     // Make an AJAX request to your server to get the latest sharing text
     // For example, you can use jQuery's $.get() method:
-    $.get("/get-sharing-text", function(data) {
+    $.get("/get-sharing-text", function (data) {
         var sharingText = data.sharing_text;
 
         // Check if the sharing text has changed
